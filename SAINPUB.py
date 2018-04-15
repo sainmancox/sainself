@@ -14,7 +14,7 @@ from googletrans import Translator
 
 cl = LINETCR.LINE()
 #cl.login(qr=True)
-cl.login(token='ErHvZ0wnlbyv9ucqpAj8.sGpL7MhXv/v78cRSmT7doa.Ha8SF3Fdlw8OLigrYH4zLliNF6gburHHH30EbIxziG8=') # BOT PUBLIK
+cl.login(token='Erkv7l2j2mSASxwVFoZ8.sGpL7MhXv/v78cRSmT7doa.eTfxddkYkHiMYLCcObtFkIBTOUDFr4XWr//CjYbDAP0=') # BOT PUBLIK
 cl.loginResult()
 
 print "❂➣ [BOT PUBLIK BERHASIL LOGIN}"
@@ -53,7 +53,7 @@ helpMessage ="""
 23. Getcontact: [tag member]
 24. Getpp [tag member]
 25. Gethome [tag member]
-26. Getgroup (cover group)
+26. Getimage group
 27. Set sider
 28. Cek sider
 29. setview
@@ -65,29 +65,13 @@ helpMessage ="""
 35. Gift3
 36. Line clone
 37. Key translate
-38. Up chat / Up
-39. love [Siti love adi]
-40. sider on/off (auto)
-==============================
-Mʏ ᴄʀᴇᴀᴛᴏʀ:
+38. love [Siti love adi]
+39. sider on/off (auto)
+=============================
+My creator:
 line.me//ti/p/~tak.dapat.tidur
-==============================
+=============================
 """
-
-protectMessage ="""Empty"""
-#╔═════════════
-#║    ADMIN ONLY
-#╠═════════════
-#║╔════════════
-#║╠❂͜͡⚡➣qr on/oғғ
-#║╠❂͜͡⚡➣gυeѕт on/oғғ
-#║╠❂͜͡⚡➣мeмвer on/oғғ
-#║╠❂͜͡⚡➣groυp on/oғғ
-#║╠❂͜͡⚡➣ĸιcĸ on/oғғ
-#║╠❂͜͡⚡➣cancel on/oғғ
-#║╚════════════
-#╚═════════════
-
 
 socmedMessage ="""
 ╔═════════════
@@ -136,7 +120,6 @@ botMessage ="""
 ║╠❂͜͡⚡➣Speed / Sp
 ║╠❂͜͡⚡➣Grup list
 ║╠❂͜͡⚡➣Tagall / Mentionall
-║╠❂͜͡⚡➣Me
 ║╚════════════
 ╚═════════════
 """
@@ -187,21 +170,23 @@ KAC=[cl]
 mid = cl.getProfile().mid
 
 Bots=[mid]
-owner=["u3cfa63811888b3a880bc4f348a95b23b",mid]
-admin=["u3cfa63811888b3a880bc4f348a95b23b",mid]
+owner=["u3cfa63811888b3a880bc4f348a95b23b","u0040a6dfc0a274f29899cccfc1c9b457",mid]
+admin=["u3cfa63811888b3a880bc4f348a95b23b","u0040a6dfc0a274f29899cccfc1c9b457",mid]
 baby=[""]#chery/barby/ranita
-creator=["u3cfa63811888b3a880bc4f348a95b23b"]
-owner=["u3cfa63811888b3a880bc4f348a95b23b"]
+creator=["u3cfa63811888b3a880bc4f348a95b23b","u0040a6dfc0a274f29899cccfc1c9b457"]
+owner=["u3cfa63811888b3a880bc4f348a95b23b","u0040a6dfc0a274f29899cccfc1c9b457"]
 wait = {
     'contact':False,
     'autoJoin':True,
+    'autoCancel':{"on":True,"members":1},
     'leaveRoom':False,
     'autoAdd':False,
     'timeline':True,
+    'displayName':True,
     "Timeline":True,
-    "message":"""Tʜᴀɴᴋꜱ ғᴏʀ ᴀᴅᴅ ᴍᴇ (^_^)\nIɴᴠɪᴛᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ヘ(^_^)ヘ\n\nCᴏɴᴛᴀᴄᴛ Mʏ Cʀᴇᴀᴛᴏʀ:\nline.me/ti/p/~tak.dapat.tidur""",
+    "message":"""Thanks for add me (^_^)\n\nContact My cerator:\nline.me/ti/p/~tak.dapat.tidur""",
     "lang":"JP",
-    "comment":"Cᴏɴᴛᴀᴄᴛ Mʏ Cʀᴇᴀᴛᴏʀ:\nline.me/ti/p/~tak.dapat.tidur",
+    "comment":"Invite to your group ヘ(^_^)ヘ\n\nContact My cerator:\nline.me/ti/p/~tak.dapat.tidur",
     "commentOn":True,
     "commentBlack":{},
     "wblack":False,
@@ -214,9 +199,18 @@ wait = {
     "tag":True,
     "pap":True,
     "steal":{},
+    'pap':{},
+    'invite':{},
+    "spam":{},
     "gift":{},
     "likeOn":True,
     "alwayRead":True,
+    "detectMention":True,
+    "detectMention2":True,
+    'point':False,
+    'sidermem':False,
+    "mid":{},
+    "sendMessage":True,
     "Mimic":False,
     "mimic":False,
     "winvite":True,
@@ -225,8 +219,8 @@ wait = {
     "Lv":True,
     "atjointicket":True,
     "Sider":{},
-    "Simi":{},    
-    "lang":"JP",
+    "members":1,
+    "Simi":{},
     "BlGroup":{}
 }
 
@@ -518,7 +512,7 @@ def sendVoice(self, to_, path):
             raise Exception('Upload voice failure.')
         return True
 
-def mention(to,nama):
+def tagall(to,nama):
     aa = ""
     bb = ""
     strt = int(12)
@@ -530,17 +524,40 @@ def mention(to,nama):
         aa += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(mm)+"},"""
         strt = strt + 6
         akh = akh + 4
-        bb += "✔ @c \n"
+        bb += "✮ @c \n"
     aa = (aa[:int(len(aa)-1)])
     msg = Message()
     msg.to = to
     msg.text = "「Mention」\n"+bb
     msg.contentMetadata = {'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
-    #print msg
+    print "[Command] Tag All"
     try:
-         cl.sendMessage(msg)
+      cl.sendMessage(msg)
     except Exception as error:
-        print error
+      print error
+
+def summon(to,nama):
+    aa = ""
+    bb = ""
+    strt = int(14)
+    akh = int(14)
+    nm = nama
+    for mm in nm:
+      akh = akh + 2
+      aa += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(mm)+"},"""
+      strt = strt + 6
+      akh = akh + 4
+      bb += "\xe2\x95\xa0 @x \n"
+    aa = (aa[:int(len(aa)-1)])
+    msg = Message()
+    msg.to = to
+    msg.text = "\xe2\x95\x94\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\n"+bb+"\xe2\x95\x9a\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90"
+    msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
+    print "[Command] Tag Sider on"
+    try:
+       cl.sendMessage(msg)
+    except Exception as error:
+       print error
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
@@ -550,7 +567,7 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
     if to not in messageReq:
         messageReq[to] = -1
     messageReq[to] += 1
-		
+
 def removeAllMessages(self, lastMessageId):
       return self._client.removeAllMessages(0, lastMessageId)
 
@@ -561,8 +578,7 @@ def bot(op):
         if op.type == 13:
             if wait["auto"] == True:
                 cl.acceptGroupInvitation(op.param1)
-                cl.sendText(op.param1, "Jᴀɴɢᴀɴ ɪɴᴠɪᴛᴇ ꜱᴇᴍʙᴀʀᴀɴɢ ᴏʀᴀɴɢ! Sᴇʟᴀɪɴ ᴅᴀᴘᴀᴛ ɪᴊɪɴ ᴅᴀʀɪ ᴏᴡɴᴇʀ ᴀᴛᴀᴜ ᴀᴅᴍɪɴ.\n\nSɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ [Mɪꜱᴛᴇʀ Hᴇʟᴘ] ᴜɴᴛᴜᴋ ʙᴀɴᴛᴜᴀɴ, ᴅᴀɴ ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ. Tᴇʀɪᴍᴀ Kᴀꜱɪʜ")
- #               cl.sendText(op.param1, "Tᴇʀɪᴍᴀ ᴋᴀꜱɪʜ ᴛᴇʟᴀʜ ᴜɴᴅᴀɴɢ ꜱᴀʏᴀ.\nPᴇʀᴋᴇɴᴀʟᴋᴀɴ ɴᴀᴍᴀ ꜱᴀʏᴀ ᴍɪꜱᴛᴇʀ Rɪᴜꜱ 👱\n\nSɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ [Mɪꜱᴛᴇʀ Hᴇʟᴘ] ᴜɴᴛᴜᴋ ʙᴀɴᴛᴜᴀɴ, ᴅᴀɴ ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ. Tᴇʀɪᴍᴀ Kᴀꜱɪʜ")
+                cl.sendText(op.param1, "Do not invite anyone !! In addition to permission from the board or group owner. Thank you 🙂")
 
 
         if op.type == 5:
@@ -587,6 +603,7 @@ def bot(op):
                     if cctv['cyduk'][op.param1]==True:
                         if op.param1 in cctv['point']:
                             Name = cl.getContact(op.param2).displayName
+#                           Name = summon(op.param2)
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
                             else:
@@ -594,11 +611,17 @@ def bot(op):
                                 if " " in Name:
                                     nick = Name.split(' ')
                                     if len(nick) == 2:
-                                        cl.sendText(op.param1, "Haii " + "☞ " + nick[0] + " ☜" + "\nNgintip Aja Niih. . .\nChat Kek Idiih (-__-)   ")
+                                        cl.sendText(op.param1, "Haii " + "☞ " + Name + " ☜" + "\nCie cie yang jones ngintip aja cie . . .\nSini napa nes  (-__-)   ")
+                                        time.sleep(0.2)
+                                        summon(op.param1,[op.param2])
                                     else:
-                                        cl.sendText(op.param1, "Haii " + "☞ " + nick[1] + " ☜" + "\nBetah Banget Jadi Penonton. . .\nChat Napa (-__-)   ")
+                                        cl.sendText(op.param1, "Haii " + "☞ " + Name + " ☜" + "\nBisulan tujuh turunan cctv telus . . .\nChat Napa (-__-)   ")
+                                        time.sleep(0.2)
+                                        summon(op.param1,[op.param2])
                                 else:
-                                    cl.sendText(op.param1, "Haii " + "☞ " + Name + " ☜" + "\nNgapain Kak Ngintip Aja???\nSini Gabung Chat...   ")
+                                    cl.sendText(op.param1, "Haii " + "☞ " + Name + " ☜" + "\nKak ngapain ngintip ? \nSini Dong ih..   ")
+                                    time.sleep(0.2)
+                                    summon(op.param1,[op.param2])
                         else:
                             pass
                     else:
@@ -608,7 +631,60 @@ def bot(op):
 
         else:
             pass
+        if op.type == 26:
+            msg = op.message
+            if msg.to in settings["simiSimi"]:
+                if settings["simiSimi"][msg.to] == True:
+                    if msg.text is not None:
+                        text = msg.text
+                        r = requests.get("http://api.ntcorp.us/chatbot/v1/?text=" + text.replace(" ","+") + "&key=beta1.nt")
+                        data = r.text
+                        data = json.loads(data)
+                        if data['status'] == 200:
+                            if data['result']['result'] == 100:
+                                cl.sendText(msg.to, "[From Simi]\n" + data['result']['response'].encode('utf-8'))
 
+            if 'MENTION' in msg.contentMetadata.keys() != None:
+                 if wait["detectMention"] == True:
+                     contact = cl.getContact(msg.from_)
+                     cName = contact.displayName
+                     balas = ["",cName + " Ada apa kak panggil aku ?, ", cName + " Kangen kak ?  Datang aja ke lumah aku",  cName + " Yang tag jones ", "Maaf aku lagi nikung janga  ganggu, " + cName + "?","Au ah tag mulu, ", "Lagi anu kak tanggung mau keluar, "]
+                     ret_ = random.choice(balas)
+                     name = re.findall(r'@(\w+)', msg.text)
+                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                     mentionees = mention['MENTIONEES']
+                     for mention in mentionees:
+                           if mention['M'] in Bots:
+                                  cl.sendText(msg.to,ret_)
+                                  cl.sendText(msg.from_,ret_)
+                                  time.sleep(0.2)
+                                  summon(op.param1,[op.param2])
+                                  break
+
+            if 'MENTION' in msg.contentMetadata.keys() != None:
+                 if wait["detectMention2"] == True:          
+                    contact =  cl.getContact(msg.from_)
+                    cName = contact.displayName
+                    balas = ["Woii " + cName + ", Dasar Jones Ngetag Mulu!"]
+                    balas1 = "Ini Foto Sii Jones Yang Suka Ngetag. . ."
+                    ret_ = random.choice(balas)
+                    image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+                    name = re.findall(r'@(\w+)', msg.text)
+                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                    mentionees = mention['MENTIONEES']
+                    for mention in mentionees:
+                           if mention['M'] in Bots:
+                                  cl.sendText(msg.to,ret_)
+                                  cl.sendText(msg.to,balas1)
+                                  cl.sendImageWithURL(msg.to,image)
+                                  msg.contentType = 7   
+                                  msg.text = None
+                                  msg.contentMetadata = {
+                                                       "STKID": "7",
+                                                       "STKPKGID": "1",
+                                                       "STKVER": "100" }
+                                  cl.sendMessage(msg)                                
+                                  break
 #---------------------------------------------------------------------
         if op.type == 26:
             msg = op.message
@@ -619,7 +695,7 @@ def bot(op):
             if "@"+cl.getProfile().displayName in msg.text:
                 if wait["tag"] == True:
                     tanya = msg.text.replace("@"+cl.getProfile().displayName,"")
-                    jawab = ("Kenapa Tag Si "+cl.getProfile().displayName+"Kangen yah..!!!\nPC aja langsung biar anu hihi..!!\n\n[autoRespon]\nby 🍁հմՏɑíղ✍️\n👉line.me//t/p/~tak.dapat.tidur👈","Nah ngetag lagi si "+cl.getProfile().displayName+" mending ajak mojok aja dari pada ngetag mulu.. wkwk...!!!\n\n[autoRespon]\nby 🍁հմՏɑíղ✍️\n👉line.me//t/p/~tak.dapat.tidur👈")
+                    jawab = ("Kenapa Tag Si  "+cl.getProfile().displayName+" Kangen yah..!!!\nPC aja langsung biar anu hihi..!!","Nah ngetag lagi si "+cl.getProfile().displayName+" mending ajak mojok nah bozz saya 👉  🍁հմՏɑíղ✍️ line.me//t/p/~tak.dapat.tidur kasian bozz saya jones,, dari pada ngetag mulu.. wkwk...!!!")
                     jawaban = random.choice(jawab)
                     cl.sendText(msg.to,jawaban)
 
@@ -652,7 +728,7 @@ def bot(op):
                 c.contentMetadata={'mid':op.param2}
                 cl.sendMessage(c)
                 cl.sendImageWithURL(op.param1,image)
-                cl.sendText(op.param1,"Hɪɪ... " + cl.getContact(op.param2).displayName + " \nWᴇʟᴄᴏᴍᴇ Tᴏ " + str(ginfo.name) + "\n\n" + "Gʀᴏᴜᴘ Cʀᴇᴀᴛᴏʀ :\n👉  " + ginfo.creator.displayName + "\n\nBᴜᴅᴀʏᴀᴋᴀɴ ᴄᴇᴋ ɴᴏᴛᴇ\nDᴀɴ ꜱᴇᴍᴏɢᴀ ʙᴇᴛᴀʜ ᴅɪꜱɪɴɪ ^_^\nSɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ [Mɪꜱᴛᴇʀ ʜᴇʟᴘ],\nᴅᴀɴ ɢᴜɴᴀᴋᴀɴ ᴅɢɴ ʙɪᴊᴀᴋ. Tᴇʀɪᴍᴀ Kᴀꜱɪʜ")
+                cl.sendText(op.param1,"Hii... " + cl.getContact(op.param2).displayName + " \nWelcome to " + str(ginfo.name) + "\n\n" + "Group creator :\n👉  " + ginfo.creator.displayName + "\n\nObey the rules in the group admin\nAnd hopefully feel at home here 🙂\nPlease type [Help/Key], For help. And use wisely. Thank you 🙂")
                 print "MEMBER HAS JOIN THE GROUP"
 
         if op.type == 15:
@@ -665,49 +741,24 @@ def bot(op):
                 c.contentMetadata={'mid':op.param2}
                 cl.sendMessage(c)
                 cl.sendImageWithURL(op.param1,image)
-                cl.sendText(op.param1,"Gᴏᴏᴅ Bʏᴇ " + cl.getContact(op.param2).displayName +  "\nSᴇᴇ Yᴏᴜ Nᴇxᴛ Tɪᴍᴇ . . . (p′︵‵。) 🤗")
+                cl.sendText(op.param1,"Good bye " + cl.getContact(op.param2).displayName +  "\nSee you next time . . . (p′︵‵。) 🤗")
                 print "MEMBER HAS LEFT THE GROUP"
 #-----------------------------------------------
         if op.type == 25:
             msg = op.message
             if msg.contentType == 13:
-            	if wait["winvite"] == True:
-                     if msg.from_ in admin or owner:
-                         _name = msg.contentMetadata["displayName"]
-                         invite = msg.contentMetadata["mid"]
-                         groups = cl.getGroup(msg.to)
-                         groups = cl.getGroup(msg.to)
-                         pending = groups.invitee
-                         targets = []
-                         for s in groups.members:
-                             if _name in s.displayName:
-                                 cl.sendText(msg.to,"-> " + _name + " was here")
-                                 break
-                             elif invite in wait["blacklist"]:
-                                 cl.sendText(msg.to,"Sorry, " + _name + " On Blacklist")
-                                 cl.sendText(msg.to,"Call my owner to use command !, \n➡Unban: " + invite)
-                                 break
-                             else:
-                                 targets.append(invite)
-                         if targets == []:
-                             pass
-                         else:
-                             for target in targets:
-                                 try:
-                                     cl.findAndAddContactsByMid(target)
-                                     cl.inviteIntoGroup(msg.to,[target])
-                                     cl.sendText(msg.to,"Done Invite : \n➡" + _name)
-                                     wait["winvite"] = False
-                                     break
-                                 except:
-                                     try:
-                                         ki.findAndAddContactsByMid(invite)
-                                         ki.inviteIntoGroup(op.param1,[invite])
-                                         wait["winvite"] = False
-                                     except:
-                                         cl.sendText(msg.to,"Negative, Error detected")
-                                         wait["winvite"] = False
-                                         break
+             	 if wait["winvite"] == True:
+                   if msg.from_ in admin or owner:
+                      _name = msg.contentMetadata["displayName"]
+                      invite = msg.contentMetadata["mid"]
+                      groups = cl.getGroup(msg.to)
+                      groups = cl.getGroup(msg.to)
+                      pending = groups.invitee
+                      targets = []
+                      for s in groups.members:
+                          if _name in s.displayName:
+                              cl.sendText(msg.to,"-> " + _name + " was here")
+                              break
 #--------------NOTIFIED_INVITE_INTO_GROUP----------------
         if op.type == 13:
 	    print op.param3
@@ -720,19 +771,11 @@ def bot(op):
               if wait["autoJoin"] == True:
                 if op.param2 in Bots or owner or mid:
                   cl.acceptGroupInvitation(op.param1)
-                  cl.sendText(op.param1, "Tᴇʀɪᴍᴀ ᴋᴀꜱɪʜ ᴛᴇʟᴀʜ ᴜɴᴅᴀɴɢ ꜱᴀʏᴀ.\nPᴇʀᴋᴇɴᴀʟᴋᴀɴ ɴᴀᴍᴀ ꜱᴀʏᴀ ᴍɪꜱᴛᴇʀ Rɪᴜꜱ 👱\n\nSɪʟᴀʜᴋᴀɴ ᴋᴇᴛɪᴋ [Mɪꜱᴛᴇʀ Hᴇʟᴘ] ᴜɴᴛᴜᴋ ʙᴀɴᴛᴜᴀɴ, ᴅᴀɴ ɢᴜɴᴀᴋᴀɴ ᴅᴇɴɢᴀɴ ʙɪᴊᴀᴋ. Tᴇʀɪᴍᴀ Kᴀꜱɪʜ")
+                  cl.sendText(op.param1, "Thank you for inviting me.\nIntroduce my name is Mr. Rius 🤖\n\nPlease type [Help/Key], For help. And use wisely. Thank you 🙂")
                 else:
                   cl.rejectGroupInvitation(op.param1)
               else:
                 print "autoJoin is Off"
-#-----------------NOTIFIED_KICKOUT_FROM_GROUP-----------------
-        if op.type == 19:
-            if op.param3 in admin:
-                 cl.kickoutFromGroup(op.param1,[op.param2])
-                 cl.inviteIntoGroup(op.param1,admin)
-                 cl.inviteIntoGroup(op.param1,[op.param3])
-            else:
-                pass
 #================================================================
         if op.type == 22:
             if wait["leaveRoom"] == True:
@@ -834,7 +877,7 @@ def bot(op):
                     cl.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text in ["Mister help"]:
+            elif msg.text in ["Help","Key","help","key"]:
 					if wait["lang"] == "JP":
 						cl.sendText(msg.to,helpMessage)
 					else:
@@ -896,9 +939,9 @@ def bot(op):
 					else:
 						cl.sendText(msg.to,"It can't be used besides the group.")
 #--------------------------------------------------
-            elif "Botinvite " in msg.text:
+            elif "Jemput dia " in msg.text:
 				if msg.from_ in admin or owner:
-					midd = msg.text.replace("Botinvite ","")
+					midd = msg.text.replace("Jemput dia ","")
 					cl.findAndAddContactsByMid(midd)
 					cl.inviteIntoGroup(msg.to,[midd])
 #--------------------------------------------------
@@ -906,24 +949,6 @@ def bot(op):
                  msg.contentType = 13
                  msg.contentMetadata = {'mid': mid}
                  cl.sendMessage(msg)
-#--------------------------------------------------
-            elif msg.text in ["Cancel","cancel"]:
-				if msg.from_ in admin or owner:
-					if msg.toType == 2:
-						G = cl.getGroup(msg.to)
-						if G.invitee is not None:
-							gInviMids = [contact.mid for contact in G.invitee]
-							cl.cancelGroupInvitation(msg.to, gInviMids)
-						else:
-							if wait["lang"] == "JP":
-								cl.sendText(msg.to,"No one is inviting")
-							else:
-								cl.sendText(msg.to,"Sorry, nobody absent")
-					else:
-						if wait["lang"] == "JP":
-							cl.sendText(msg.to,"Can not be used outside the group")
-						else:
-							cl.sendText(msg.to,"Not for use less than group")
 #--------------------------------------------------
             elif msg.text in ["Ourl","Link on","Urlon"]:
 				if msg.from_ in admin or owner:
@@ -1272,6 +1297,33 @@ def bot(op):
 							cl.sendText(msg.to,"already off")
 						else:
 							cl.sendText(msg.to,"done")
+#----------------------------------------------------#
+            elif msg.text in ["Respontagbot on","Autoresponbot:on","Responbot on","Responbot:on"]:
+              if msg.from_ in admin:
+                wait["detectMention"] = True
+                cl.sendText(msg.to,"Auto respon tag On")
+                
+            elif msg.text in ["Responbot2 on"]:
+              if msg.from_ in admin:
+                    wait["detectMention"] = False
+                    wait["detectMention2"] = True
+                    wait["detectMention3"] = False
+                    wait["kickMention"] = False
+                    cl.sendText(msg.to,"Auto Respon2 Sudah Aktif")
+              else:
+                    cl.sendText(msg.to,"Khusus Admin")
+
+            elif msg.text in ["Responbot2 off"]:
+              if msg.from_ in admin:
+                    wait["detectMention2"] = False
+                    cl.sendText(msg.to,"Auto Respon2 Sudah Off")
+              else:
+                    cl.sendText(msg.to,"Khusus Admin")
+              
+            elif msg.text in ["Respontagbot off","Autoresponbot:off","Responbot off","Responbot:off"]:
+              if msg.from_ in admin:
+                wait["detectMention"] = False
+                cl.sendText(msg.to,"Auto respon tag Off")
 #--------------------------------------------------
             elif msg.text in ["Gcancel:"]:
 				if msg.from_ in admin or owner:
@@ -1404,7 +1456,14 @@ def bot(op):
 					else:md+="[􀜁􀇔Mask􏿿] Auto Sider : [❌]\n"
 					if wait["auto"] == True: md+="[􀜁􀇔Mask􏿿] Simisimi On : [✅]\n"
 					else:md+="[􀜁􀇔Mask􏿿] Simisimi Off : [❌]\n"
+					if wait["detectMention"] == True: md+="[􀜁􀇔Mask􏿿] Respon on [✅]\n"
+					else:md+="[􀜁􀇔Mask􏿿] Respon off [❌]\n"
+					if wait["detectMention2"] == True: md+="[􀜁􀇔Mask􏿿] Respon on [✅]\n"
+					else:md+="[􀜁􀇔Mask􏿿] Respon off [❌]\n"
 					cl.sendText(msg.to,md)
+					msg.contentType = 13
+					msg.contentMetadata = {'mid': "u3cfa63811888b3a880bc4f348a95b23b"}
+					cl.sendMessage(msg)
 #--------------------------------------------------
             elif "album merit " in msg.text:
 				if msg.from_ in admin or owner:
@@ -1647,47 +1706,38 @@ def bot(op):
 						wait["cName"] = n
 						cl.sendText(msg.to,"changed to\n\n" + n)
 #-----------------------------------------------
-            elif msg.text in ["Tagall","Mentionall"]:
-                              group = cl.getGroup(msg.to)
-                              nama = [contact.mid for contact in group.members]
-                              nm1, nm2, nm3, nm4, jml = [], [], [], [], len(nama)
-                              if jml <= 100:
-                                 mention(msg.to, nama)
-                              if jml > 100 and jml < 200:
-                                 for i in range (0, 99):
-                                        nm1 += [nama[i]]
-                                 mention(msg.to, nm1)
-                                 for j in range (100, len(nama)-1):
-                                        nm2 += [nama[j]]
-                                 mention(msg.to, nm2)
-                              if jml > 200 and jml < 300:
-                                 for i in range (0, 99):
-                                        nm1 += [nama[i]]
-                                 mention(msg.to, nm1)
-                                 for j in range (100, 199):
-                                        nm2 += [nama[j]]
-                                 mention(msg.to, nm2)
-                                 for k in range (200, len(nama)-1):
-                                        nm3 += [nama[k]]
-                                 mention(msg.to, nm3)
-                              if jml > 300 and jml < 400:
-                                 for i in range (0, 99):
-                                        nm1 += [nama[i]]
-                                 mention(msg.to, nm1)
-                                 for j in range (100, 199):
-                                        nm2 += [nama[j]]
-                                 mention(msg.to, nm2)
-                                 for k in range (200, 299):
-                                        nm3 += [nama[k]]
-                                 mention(msg.to, nm3)
-                                 for l in range (300, len(nama)-1):
-                                     nm4 += [nama[l]]
-                                 mention(msg.to, nm4)
-                              cnt = Message()
-                              cnt.text = "Hasil Tag : "+str(jml)
-                              cnt.to = msg.to
-                              cl.sendText(msg.to,"TAGALL SUCCESS")
-                              cl.sendMessage(cnt)
+            elif msg.text.lower() in ["mentionall","tagall"]:
+                  group = cl.getGroup(msg.to)
+                  nama = [contact.mid for contact in group.members]
+                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
+                  if jml <= 100:
+                      tagall(msg.to, nama)
+                  if jml > 100 and jml < 500:
+                      for i in range(0,99):
+                          nm1 += [nama[i]]
+                      tagall(msg.to, nm1)
+                      for j in range(100, len(nama)-1):
+                          nm2 += [nama[j]]
+                      tagall(msg.to, nm2)
+                      for k in range(200, len(nama)-1):
+                          nm3 += [nama[k]]
+                      tagall(msg.to, nm3)
+                      for l in range(300, len(nama)-1):
+                          nm4 += [nama[l]]
+                      tagall(msg.to, nm4)
+                      for m in range(400, len(nama)-1):
+                          nm5 += [nama[m]]
+                      tagall(msg.to, nm5)
+                  cnt = Message()
+                  cnt.text = "Results mention all : "+str(jml) +  " Members"
+                  cnt.to = msg.to
+                  cl.sendText(msg.to,"Mention all success")
+                  cl.sendMessage(cnt)
+                  if jml > 500:
+                      cnt = Message()
+                      cnt.text = ""
+                      cnt.to = msg.to
+                      cl.sendMessage(cnt)
 #-----------------------------------------------
             elif msg.text in ["Bot pergi"]:
 					if msg.toType == 2:
@@ -1767,7 +1817,6 @@ def bot(op):
                     cl.sendText(msg.to,"UpdateName => " + string + " <= Success")
 #-----------------------------------------------
             elif msg.text in ['kontol','Kontol','jancuk','Jancuk','jancok','Jancok','asu','Asu','jembut','Jembut','jembot','Jembot','tempek','Tempek','itil','Itil','makmu','Makmu','mak mu','Mak mu']:
-              if msg.from_ in admin or owner:
                     msg.contentType = 13
                     msg.contentMetadata = {'mid': "ua7fb5762d5066629323d113e1266e8ca',"}
                     cl.sendMessage(msg)
@@ -1775,6 +1824,7 @@ def bot(op):
                     cl.sendMessage(msg)
 #-----------------------------------------------
             elif msg.text in ["Lag"]:
+              if msg.from_ in admin:
                 cl.sendText(msg.to,"44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.55.44.44.44.44.44.44.44.4444.44.44.4.44.4.44.44.4.440.440.004444.4444.44.33.")
                 cl.sendText(msg.to,"Pekok 􀜁􀅔Har Har􏿿")
                 cl.sendText(msg.to,"Pekok 􀜁􀅔Har Har􏿿")
@@ -1803,6 +1853,7 @@ def bot(op):
                 cl.sendText(msg.to,jawaban)
         #-------------Fungsi Spam Start---------------------#
             elif msg.text in ["Up","up","Up Chat","Up chat","up chat","Upchat","upchat"]:
+              if msg.from_ in admin:
                 cl.sendText(msg.to,"Kita nge-spam kuy!")
                 cl.sendText(msg.to,"Kuy 􀜁􀅔XD􏿿")
                 cl.sendText(msg.to,"Kuy 􀜁􀅔haha􏿿")
@@ -1844,6 +1895,7 @@ def bot(op):
                 cl.sendText(msg.to,"Done")
 
             elif msg.text in ["Up up","up up"]:
+              if msg.from_ in admin:
                 cl.sendText(msg.to,"Ha? ada apa nih")
                 cl.sendText(msg.to,"Di up in bos")
                 cl.sendText(msg.to,"Butuh balon udara nggak?")
@@ -1876,6 +1928,7 @@ def bot(op):
                 cl.sendText(msg.to,"Maaf di up bos")
 
             elif msg.text in ["Spam"]:
+              if msg.from_ in admin:
                 cl.sendText(msg.to,"Aku belum mandi")
                 cl.sendText(msg.to,"Tak tun tuang")
                 cl.sendText(msg.to,"Tak tun tuang")
@@ -1908,6 +1961,7 @@ def bot(op):
                 cl.sendText(msg.to,"Udah ah gosip mulu doain aja biar dapet")
 
             elif msg.text == "Myspam":
+              if msg.from_ in admin:
                     cl.sendText(msg.to,"3")
                     cl.sendText(msg.to,"2")
                     cl.sendText(msg.to,"1")
@@ -2037,6 +2091,7 @@ def bot(op):
                     cl.sendText(msg.to,"Cinta begitu lembut dan merdu, namun jangan kau gunankan untuk merayu. Karena rayuan hanyalah akan mengosongkan makna kecintaan yang sesungguhnya.")
                     cl.sendText(msg.to,"Cinta bukanlah penuntutan, penguasaan, pemaksaan, dan pengintimidasian. Tak lain itu hanyalah cara manusia mendefinisikannya. Karena cinta adalah perjuangan, pengorbanan, tanggungjawab, kejujuran, dan keikhlasan.")
                     cl.sendText(msg.to,"Derajat cinta hanya bisa diukur dengan seberapa besar “Pemberian” yang kita korbankan.")
+
             elif msg.text in ["Ngantuk","Sleep","Nite","Good night"]:
                 cl.sendText(msg.to,"Have a nice dream  􀜁􀅔Har Har􏿿")
                 cl.sendText(msg.to,"Have a nice dream  􀜁􀅔Har Har􏿿")
@@ -2616,7 +2671,7 @@ def bot(op):
                     except Exception as error:
                         print error
 #-----------------------------------
-            elif "Getgroup" in msg.text:
+            elif "Getimage group" in msg.text:
                 group = cl.getGroup(msg.to)
                 path =("http://dl.profile.line-cdn.net/" + group.pictureStatus)
                 cl.sendImageWithURL(msg.to, path)
@@ -3368,87 +3423,86 @@ def bot(op):
                 msg.text = None
                 cl.sendMessage(msg)
 
-            elif "Gift dia 5000c " in msg.text:
-              if msg.from_ in admin or owner:
-                       msg.contentType = 13
-              if msg.from_ in admin or owner:
-                       nk0 = msg.text.replace("Gift dia 5000c ","")
-                       nk1 = nk0.lstrip()
-                       nk2 = nk1.replace("@","")
-                       nk3 = nk2.rstrip()
-                       _name = nk3
-                       gs = cl.getGroup(msg.to)
-                       targets = []
-                       for s in gs.members:
-                           if _name in s.displayName:
-                              targets.append(s.mid)
-                       if targets == []:
-                           sendMessage(msg.to,"user does not exist")
-                           pass
-                       else:
-                           for target in targets:
-                                try:
-                                    cl.sendText(msg.to,_name + " Cʜᴇᴄᴋ Yᴏᴜʀ Gɪғᴛ Bᴏx")
-                                    msg.contentType = 9
-                                    msg.contentMetadata= {'PRDTYPE': 'STICKER',
-                                                         'STKVER': '1',
-                                                         'MSGTPL': '1',
-                                                         'STKPKGID': '1380280'}
-                                    msg.to = target
-                                    msg.text = None
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendMessage(msg)
-                                    cl.sendText(msg.to,_name + "Dᴏɴᴇ 5000 ᴄᴏɪɴ")
-                                except:
-                                    msg.contentMetadata = {'mid': target}
+#            elif "Gift dia 5000c " in msg.text:
+#              if msg.from_ in admin or owner:
+#                       msg.contentType = 13
+#                       nk0 = msg.text.replace("Gift dia 5000c ","")
+#                       nk1 = nk0.lstrip()
+#                       nk2 = nk1.replace("@","")
+#                       nk3 = nk2.rstrip()
+#                       _name = nk3
+#                       gs = cl.getGroup(msg.to)
+#                       targets = []
+#                       for s in gs.members:
+#                           if _name in s.displayName:
+#                              targets.append(s.mid)
+#                       if targets == []:
+#                           sendMessage(msg.to,"user does not exist")
+#                           pass
+#                       else:
+#                           for target in targets:
+#                                try:
+#                                    cl.sendText(msg.to,_name + " Cʜᴇᴄᴋ Yᴏᴜʀ Gɪғᴛ Bᴏx")
+#                                    msg.contentType = 9
+#                                    msg.contentMetadata= {'PRDTYPE': 'STICKER',
+#                                                         'STKVER': '1',
+#                                                         'MSGTPL': '1',
+#                                                         'STKPKGID': '1380280'}
+#                                    msg.to = target
+#                                    msg.text = None
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendMessage(msg)
+#                                    cl.sendText(msg.to,_name + "Dᴏɴᴇ 5000 ᴄᴏɪɴ")
+#                                except:
+#                                    msg.contentMetadata = {'mid': target}
 																		
 								
             elif "Gift1 " in msg.text:
@@ -3832,7 +3886,7 @@ def bot(op):
 		gid = cl.getGroupIdsJoined()
 		if msg.from_ in admin or owner:
 		    for i in gid:
-			cl.sendText(i,"+bc+""\n\n@Bʀᴏᴀᴅᴄᴀꜱᴛ")
+			cl.sendText(i,""+bc+"\n\n@Bʀᴏᴀᴅᴄᴀꜱᴛ")
 		    cl.sendText(msg.to,"Success BC BosQ")
 		else:
 		    cl.sendText(msg.to,"Khusus Admin")
