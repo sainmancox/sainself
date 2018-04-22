@@ -747,18 +747,42 @@ def bot(op):
         if op.type == 25:
             msg = op.message
             if msg.contentType == 13:
-             	 if wait["winvite"] == True:
-                   if msg.from_ in admin or owner:
-                      _name = msg.contentMetadata["displayName"]
-                      invite = msg.contentMetadata["mid"]
-                      groups = cl.getGroup(msg.to)
-                      groups = cl.getGroup(msg.to)
-                      pending = groups.invitee
-                      targets = []
-                      for s in groups.members:
-                          if _name in s.displayName:
-                              cl.sendText(msg.to,"-> " + _name + " was here")
-                              break
+            	if wait["winvite"] == True:
+                     if msg.from_ in admin:
+                         _name = msg.contentMetadata["displayName"]
+                         invite = msg.contentMetadata["mid"]
+                         groups = cl.getGroup(msg.to)
+                         pending = groups.invitee
+                         targets = []
+                         for s in groups.members:
+                             if _name in s.displayName:
+                                 cl.sendText(msg.to,"-> " + _name + " was here")
+                                 break
+                             elif invite in wait["blacklist"]:
+                                 cl.sendText(msg.to,"Sorry, " + _name + " On Blacklist")
+                                 cl.sendText(msg.to,"Call my daddy to use command !, \n➡Unban: " + invite)
+                                 break                             
+                             else:
+                                 targets.append(invite)
+                         if targets == []:
+                             pass
+                         else:
+                             for target in targets:
+                                 try:
+                                     cl.findAndAddContactsByMid(target)
+                                     cl.inviteIntoGroup(msg.to,[target])
+                                     cl.sendText(msg.to,"Done Invite : \n➡" + _name)
+                                     wait["winvite"] = False
+                                     break
+                                 except:
+                                     try:
+                                         cl.findAndAddContactsByMid(invite)
+                                         cl.inviteIntoGroup(op.param1,[invite])
+                                         wait["winvite"] = False
+                                     except:
+                                         cl.sendText(msg.to,"Negative, Error detected")
+                                         wait["winvite"] = False
+                                         break
 #--------------NOTIFIED_INVITE_INTO_GROUP----------------
         if op.type == 13:
 	    print op.param3
@@ -771,6 +795,7 @@ def bot(op):
               if wait["autoJoin"] == True:
                 if op.param2 in Bots or owner or mid:
                   cl.acceptGroupInvitation(op.param1)
+                  cl.rejectGroupInvitation(op.param1)
                   cl.sendText(op.param1, "Thank you for inviting me.\nIntroduce my name is Mr. Rius 🤖\n\nPlease type [Help/Key], For help. And use wisely. Thank you 🙂")
                 else:
                   cl.rejectGroupInvitation(op.param1)
