@@ -17,7 +17,7 @@ cl = LINETCR.LINE()
 cl.login(token='Erkv7l2j2mSASxwVFoZ8.sGpL7MhXv/v78cRSmT7doa.eTfxddkYkHiMYLCcObtFkIBTOUDFr4XWr//CjYbDAP0=') # BOT PUBLIK
 cl.loginResult()
 
-print "❂➣ [BOT PUBLIK BERHASIL LOGIN}"
+print "❂➣ [BOT PUBLIK BERHASIL LOGIN]"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
